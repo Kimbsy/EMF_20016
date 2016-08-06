@@ -173,8 +173,7 @@ def tetris():
     note("E6", 1)
     note("C6", 1)
     note("A5", 1)
-    note("A5", 1)
-    pyb.delay(int(crotchet))    
+    note("A5", 2)
 
     # Slow bit.
     note("E6", 2)
@@ -193,6 +192,30 @@ def tetris():
     note("E6", 1)
     note("A6", 2)
     note("G#6", 4)
+
+    # Main melody.
+    note("E6", 1)
+    note("B5", 0.5)
+    note("C6", 0.5)
+    note("D6", 0.5)
+    note("E6", 0.25)
+    note("D6", 0.25)
+    note("C6", 0.5)
+    note("B5", 0.5)
+    note("A5", 1)
+    note("A5", 0.5)
+    note("C6", 0.5)
+    note("E6", 1)
+    note("D6", 0.5)
+    note("C6", 0.5)
+    note("B5", 1)
+    note("B5", 0.5)
+    note("C6", 0.5)
+    note("D6", 1)
+    note("E6", 1)
+    note("C6", 1)
+    note("A5", 1)
+    note("A6", 2)
 
 # Play some notes.
 tetris()
