@@ -1,7 +1,7 @@
-### Author: Dave Kimber
+### Author: Dave Kimber <https://github.com/Kimbsy>
 ### License: MIT
-### Appname: Dave's app
-### Description: Testing out the new badge.
+### Appname: Tetris theme tune
+### Description: Play the theme tune from tetris.
 
 import pyb
 
@@ -117,48 +117,82 @@ all_notes = {
     "B8": 7902.13,
 }
 
-# Define durations.
-all_durs = {
-    "w": 480,
-    "h": 240,
-    "q": 120,
-    "e": 60,
-}
-
 # Set up the global timer.
 t4 = pyb.Timer(4, freq=100, mode=pyb.Timer.CENTER)
 
+# define global timing duration (single crotchet in ms).
+crotchet = 480
+
 # Play a specified note for a specified amount of time.
-def note(note, duration):
+def note(note, duration_multiplier):
     t4.freq(all_notes[note])
     ch1 = t4.channel(1, pyb.Timer.PWM, pin=pyb.Pin("BUZZ"), pulse_width=(t4.period() + 1) // 2)
-    pyb.delay(all_durs[duration])
+    pyb.delay(int(crotchet * duration_multiplier))
 
-# Play the beginnig of the Tetris theme.
+# Play the Tetris theme.
 def tetris():
-    note("E6", "w")
-    note("B5", "h")
-    note("C6", "h")
-    note("D6", "h")
-    note("E6", "q")
-    note("D6", "q")
-    note("C6", "h")
-    note("B5", "h")
-    note("A5", "w")
-    note("A5", "h")
-    note("C6", "h")
-    note("E6", "w")
-    note("D6", "h")
-    note("C6", "h")
-    note("B5", "w")
-    note("B5", "h")
-    note("C6", "h")
-    note("D6", "w")
-    note("E6", "w")
-    note("C6", "w")
-    note("A5", "w")
-    note("A5", "w")
+    # Main melody.
+    note("E6", 1)
+    note("B5", 0.5)
+    note("C6", 0.5)
+    note("D6", 0.5)
+    note("E6", 0.25)
+    note("D6", 0.25)
+    note("C6", 0.5)
+    note("B5", 0.5)
+    note("A5", 1)
+    note("A5", 0.5)
+    note("C6", 0.5)
+    note("E6", 1)
+    note("D6", 0.5)
+    note("C6", 0.5)
+    note("B5", 1)
+    note("B5", 0.5)
+    note("C6", 0.5)
+    note("D6", 1)
+    note("E6", 1)
+    note("C6", 1)
+    note("A5", 1)
+    note("A5", 2)
 
+    # Second bit.
+    note("D6", 1.5)
+    note("F6", 0.5)
+    note("A6", 1)
+    note("G6", 0.5)
+    note("F6", 0.5)
+    note("E6", 1.5)
+    note("C6", 0.5)
+    note("E6", 1)
+    note("D6", 0.5)
+    note("C6", 0.5)
+    note("B5", 1)
+    note("B5", 0.5)
+    note("C6", 0.5)
+    note("D6", 1)
+    note("E6", 1)
+    note("C6", 1)
+    note("A5", 1)
+    note("A5", 1)
+    pyb.delay(int(crotchet))    
+
+    # Slow bit.
+    note("E6", 2)
+    note("C6", 2)
+    note("D6", 2)
+    note("B5", 2)
+    note("C6", 2)
+    note("A5", 2)
+    note("G#5", 2)
+    note("B5", 2)
+    note("E6", 2)
+    note("C6", 2)
+    note("D6", 2)
+    note("B5", 2)
+    note("C6", 1)
+    note("E6", 1)
+    note("A6", 2)
+    note("G#6", 4)
 
 # Play some notes.
 tetris()
