@@ -61,14 +61,14 @@ t4.freq(440)
 def dot():
     ch1 = t4.channel(1, pyb.Timer.PWM, pin=pyb.Pin("BUZZ"), pulse_width=(t4.period() + 1) // 2)
     pyb.delay(100)
-    pyb.Pin("BUZZ",pyb.Pin.OUT).low()
+    pyb.Pin("BUZZ", pyb.Pin.OUT).low()
     pyb.delay(100)
     
 # Output a dash.
 def dash():
     ch1 = t4.channel(1, pyb.Timer.PWM, pin=pyb.Pin("BUZZ"), pulse_width=(t4.period() + 1) // 2)
     pyb.delay(200)
-    pyb.Pin("BUZZ",pyb.Pin.OUT).low()
+    pyb.Pin("BUZZ", pyb.Pin.OUT).low()
     pyb.delay(100)
 
 # Output the space between letters.
@@ -104,6 +104,6 @@ def convert_string(string):
 string = dialogs.prompt_text("Enter string to convert", init_text="", width = 310, height = 220)
 
 if string:
-    ugfx.area(0,0,ugfx.width(),ugfx.height(),0)
+    ugfx.area(0, 0, ugfx.width(), ugfx.height(), 0)
     ugfx.text(30, 60, "Morse Code...", 0xFFFF)
     convert_string(string.upper())
